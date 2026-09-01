@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamados | HelpDesk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-roxa"><div class="container"><a class="navbar-brand fw-bold" href="chamados.html">HelpDesk Escolar</a><div class="d-flex align-items-center gap-3"><span class="small" id="usuario-logado"></span><button class="btn btn-sm btn-outline-primary" data-logout>Sair</button></div></div></nav>
+  <main class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <div><h1 class="h2 mb-1">Chamados</h1><p class="text-secondary mb-0" id="descricao-lista">Acompanhe suas solicitações.</p></div>
+      <button class="btn btn-primary" id="botao-novo">+ Abrir chamado</button>
+    </div>
+    <div id="mensagem" class="mensagem escondido"></div>
+
+    <section id="painel-novo" class="card border-0 shadow-sm mb-4 escondido"><div class="card-body p-4">
+      <h2 class="h4 mb-3">Novo chamado</h2>
+      <form id="form-chamado">
+        <div class="mb-3"><label class="form-label" for="titulo">Título</label><input class="form-control" id="titulo" name="titulo" maxlength="150" required></div>
+        <div class="mb-3"><label class="form-label" for="descricao">Descrição</label><textarea class="form-control" id="descricao" name="descricao" rows="5" minlength="10" required></textarea></div>
+        <div class="d-flex gap-2"><button class="btn btn-primary" type="submit">Enviar chamado</button><button type="button" class="btn btn-light border" id="cancelar-novo">Cancelar</button></div>
+      </form>
+    </div></section>
+
+    <section>
+      <div class="d-flex flex-wrap gap-2 mb-4 filtros">
+        <button class="btn btn-sm filtro ativo" data-filtro="Todos">Todos</button>
+        <button class="btn btn-sm filtro" data-filtro="Aberto">Abertos</button>
+        <button class="btn btn-sm filtro" data-filtro="Em Atendimento">Em atendimento</button>
+        <button class="btn btn-sm filtro" data-filtro="Concluído">Concluídos</button>
+      </div>
+      <div id="lista-chamados" class="grade"></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/api.js"></script><script src="js/auth.js"></script><script src="js/chamados.js"></script>
+</body>
+</html>
