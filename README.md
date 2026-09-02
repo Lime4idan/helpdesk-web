@@ -2,15 +2,17 @@
 
 Frontend simples do HelpDesk, feito com HTML, Bootstrap, CSS e JavaScript. Ele consome a HelpDesk API usando `fetch()`.
 
+Site publicado: https://helpdesk-web-plum.vercel.app
+
 ## Como executar
 
 Não é necessário executar `npm install`. Abra a pasta com a extensão Live Server do VS Code e inicie pelo arquivo `index.html`. O endereço local normalmente será `http://127.0.0.1:5500`.
 
-Antes, confirme se a API está em `http://localhost:3001`. A URL fica centralizada no começo de `js/api.js`.
+Para desenvolvimento local, confirme que a URL desejada está definida no começo de `js/api.js`.
 
 ## Configuração da API
 
-Este projeto estático não utiliza arquivo `.env`. A constante `API_URL`, no começo de `js/api.js`, centraliza o endereço da API. Localmente ela aponta para `http://127.0.0.1:3001/api`. Depois do deploy, substitua apenas esse valor pela URL pública do Render seguida de `/api`.
+Este projeto estático não utiliza arquivo `.env`. A constante `API_URL`, no começo de `js/api.js`, centraliza o endereço da API. Ela aponta para `https://helpdesk-api-t1hv.onrender.com/api`. Para usar uma API local, substitua temporariamente por `http://127.0.0.1:3001/api`.
 
 ## Funcionalidades
 
@@ -38,4 +40,4 @@ O Bootstrap 5.3.8 é carregado pelo CDN oficial recomendado na documentação. O
 
 ## Deploy na Vercel
 
-Importe esta pasta como um projeto estático na Vercel. Depois, altere `API_URL` em `js/api.js` para a URL da API publicada no Render. Na API, defina `FRONTEND_URL` com a origem do site Vercel. Não é necessário informar resultados ou links antes de realizar o deploy.
+O projeto foi importado como site estático na Vercel. A API usa `FRONTEND_URL=https://helpdesk-web-plum.vercel.app`, mantendo o CORS restrito ao frontend publicado.
