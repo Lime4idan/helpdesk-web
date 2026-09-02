@@ -4,8 +4,9 @@ if (window.location.protocol === 'file:') {
   window.location.href = `http://127.0.0.1:5500/${pagina}`;
 }
 
-// Em produção, substitua esta URL pela URL da API publicada no Render.
-const API_URL = "http://127.0.0.1:3001/api";
+// URL da API publicada no Render.
+// Para voltar ao uso local, troque por: http://127.0.0.1:3001/api
+const API_URL = 'https://helpdesk-api-t1hv.onrender.com/api';
 
 function obterToken() {
   return localStorage.getItem('helpdesk_token');
@@ -25,7 +26,7 @@ async function apiFetch(caminho, opcoes = {}) {
   try {
     resposta = await fetch(`${API_URL}${caminho}`, { ...opcoes, headers: cabecalhos });
   } catch (erro) {
-    const erroConexao = new Error('Não foi possível conectar à API. Verifique se ela está executando na porta 3001.');
+    const erroConexao = new Error('Não foi possível conectar à API. Tente novamente em alguns instantes.');
     erroConexao.detalhes = [];
     throw erroConexao;
   }
