@@ -26,7 +26,7 @@ async function apiFetch(caminho, opcoes = {}) {
   try {
     resposta = await fetch(`${API_URL}${caminho}`, { ...opcoes, headers: cabecalhos });
   } catch (erro) {
-    const erroConexao = new Error('Não foi possível conectar à API. Tente novamente em alguns instantes.');
+    const erroConexao = new Error('Could not connect to the API. Please try again in a moment.');
     erroConexao.detalhes = [];
     throw erroConexao;
   }
@@ -35,7 +35,7 @@ async function apiFetch(caminho, opcoes = {}) {
 
   if (!resposta.ok) {
     if (resposta.status === 401 && token) sair();
-    const erro = new Error(dados.mensagem || 'Não foi possível completar a operação.');
+    const erro = new Error(dados.mensagem || 'Could not complete the operation.');
     erro.detalhes = dados.erros || [];
     throw erro;
   }

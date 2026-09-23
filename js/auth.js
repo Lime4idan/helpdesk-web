@@ -26,7 +26,10 @@ function protegerPagina() {
 
   const usuario = obterUsuario();
   const elementoUsuario = document.getElementById('usuario-logado');
-  if (usuario && elementoUsuario) elementoUsuario.textContent = `${usuario.nome} (${usuario.tipo})`;
+  if (usuario && elementoUsuario) {
+    const role = usuario.tipo === 'tecnico' ? 'technician' : 'customer';
+    elementoUsuario.textContent = `${usuario.nome} (${role})`;
+  }
 }
 
 const formLogin = document.getElementById('form-login');
@@ -60,7 +63,7 @@ if (formCadastro) {
           tipo: formCadastro.tipo.value
         })
       });
-      mostrarMensagemAuth('Cadastro realizado! Redirecionando para o login...', 'sucesso');
+      mostrarMensagemAuth('Account created! Redirecting to sign in...', 'sucesso');
       setTimeout(() => { window.location.href = 'login.html'; }, 1000);
     } catch (erro) {
       mostrarMensagemAuth([erro.message, ...(erro.detalhes || [])].join(' '));
