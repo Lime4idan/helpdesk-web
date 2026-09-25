@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💬 HelpDesk Web
+# HelpDesk Web
 
 A simple, responsive interface for support requests from opening to resolution.
 
