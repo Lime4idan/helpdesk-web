@@ -3,30 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>School HelpDesk</title>
+  <meta name="description" content="A full-stack school support system for opening, organizing, and resolving requests.">
+  <meta name="theme-color" content="#6957d8">
+  <title>School HelpDesk — Support without the chaos</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2210%22 fill=%22%236957d8%22/><path d=%22M17 18v28M47 18v28M17 32h30%22 stroke=%22white%22 stroke-width=%228%22/></svg>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-light navbar-roxa">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <nav class="navbar navbar-roxa" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">School HelpDesk</a>
-      <div class="d-flex gap-2"><a class="btn btn-outline-primary" href="login.html">Sign in</a><a class="btn btn-primary" href="cadastro.html">Register</a></div>
+      <a class="navbar-brand" href="index.html"><span class="brand-mark">H+</span><span class="brand-copy">School HelpDesk<small>support system</small></span></a>
+      <div class="nav-actions"><span class="service-pill">API connected</span><a class="btn btn-outline-primary" href="login.html">Sign in</a><a class="btn btn-primary" href="cadastro.html">Create account</a></div>
     </div>
   </nav>
 
-  <main class="container">
+  <main class="container" id="content">
     <section class="hero-simples">
       <div class="conteudo-hero">
-        <div class="linha-decorativa"></div>
-        <h1>Simple support for your school community</h1>
-        <a class="btn btn-primary" href="login.html">Sign in</a>
-        <a class="btn btn-light border ms-2" href="cadastro.html">Create account</a>
+        <p class="eyebrow">School support, without the chaos</p>
+        <h1>Every request deserves a clear next step.</h1>
+        <p class="lead">Open a ticket, follow its progress, and keep the whole conversation in one place. Built for students, staff, and the people solving problems behind the scenes.</p>
+        <div class="hero-actions"><a class="btn btn-primary btn-lg" href="cadastro.html">Open your first ticket →</a><a class="btn btn-outline-primary btn-lg" href="login.html">I already have an account</a></div>
+        <p class="micro-copy">FULL STACK · EXPRESS API · MYSQL · VANILLA JS</p>
       </div>
+
+      <div class="desk-preview" aria-label="Ticket queue preview">
+        <div class="preview-toolbar"><strong>Today&apos;s queue</strong><span class="preview-count">03 ACTIVE</span></div>
+        <article class="ticket-preview"><header><span class="status atendimento">In progress</span><small>#024</small></header><h3>Projector is not connecting</h3><p>Room 12 · updated 4 min ago</p><div class="preview-assignee"><i></i><span>Claimed by Marina · Technician</span></div></article>
+        <article class="ticket-preview"><header><span class="status aberto">Open</span><small>#025</small></header><h3>Student portal access</h3><p>Account · waiting for a technician</p></article>
+        <article class="ticket-preview"><header><span class="status concluido">Resolved</span><small>#021</small></header><h3>Lab printer setup</h3><p>Closed today · 6 comments</p></article>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="Main features">
+      <article><span>01</span><h2>A focused request</h2><p>Describe the problem once and keep its status, owner, and history together.</p></article>
+      <article><span>02</span><h2>A visible queue</h2><p>Technicians can claim requests, organize priorities, and show what is already moving.</p></article>
+      <article><span>03</span><h2>A complete conversation</h2><p>Comments keep context attached to the ticket until everyone knows it is resolved.</p></article>
     </section>
   </main>
 
-  <footer class="text-center text-secondary py-4">HelpDesk academic project</footer>
+  <footer class="d-flex flex-wrap justify-content-between gap-2"><span>HelpDesk · academic full-stack project</span><span>Interface + REST API · 2026</span></footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -2,28 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign in | HelpDesk</title>
+  <meta name="theme-color" content="#6957d8"><title>Sign in | School HelpDesk</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-roxa"><div class="container"><a class="navbar-brand fw-bold" href="index.html">School HelpDesk</a><a href="cadastro.html">Create account</a></div></nav>
-  <main class="container py-5">
-    <div class="row justify-content-center"><div class="col-md-7 col-lg-5">
-      <section class="card card-form border-0 shadow-sm"><div class="card-body p-4 p-md-5">
-        <h1 class="h2 mb-2">Sign in</h1>
-        <p class="text-secondary mb-4">Enter your details to continue.</p>
-        <div id="mensagem" class="mensagem escondido"></div>
-        <form id="form-login">
-          <div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control" id="email" name="email" type="email" required></div>
-          <div class="mb-4"><label class="form-label" for="senha">Password</label><input class="form-control" id="senha" name="senha" type="password" required></div>
-          <button class="btn btn-primary w-100" type="submit">Sign in</button>
-        </form>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <nav class="navbar navbar-roxa"><div class="container"><a class="navbar-brand" href="index.html"><span class="brand-mark">H+</span><span class="brand-copy">School HelpDesk<small>support system</small></span></a><div class="nav-actions"><span class="service-pill" id="service-status">API connected</span><a class="btn btn-outline-primary" href="cadastro.html">Create account</a></div></div></nav>
+  <main class="container" id="content">
+    <section class="auth-shell">
+      <aside class="auth-aside"><div><p class="eyebrow">Welcome back</p><h1>Pick up where the request left off.</h1><p>Sign in to follow updates, answer comments, or continue working through the support queue.</p></div><ol><li>Secure account access</li><li>Role-based workspace</li><li>Complete ticket history</li></ol></aside>
+      <div class="auth-panel"><section class="card card-form"><div class="card-body p-0">
+        <p class="eyebrow">ACCOUNT_LOGIN.EXE</p><h2 class="h1 mb-2">Sign in</h2><p class="text-secondary mb-4">Use the account you created for this HelpDesk.</p>
+        <div id="mensagem" class="mensagem escondido" role="status"></div>
+        <form id="form-login"><div class="mb-3"><label class="form-label" for="email">Email address</label><input class="form-control" id="email" name="email" type="email" autocomplete="email" required></div><div class="mb-4"><label class="form-label" for="senha">Password</label><input class="form-control" id="senha" name="senha" type="password" autocomplete="current-password" required></div><button class="btn btn-primary w-100" type="submit">Enter workspace →</button></form>
         <p class="text-center mt-4 mb-0">New to HelpDesk? <a href="cadastro.html">Create an account</a></p>
-      </div></section>
-    </div></div>
+      </div></section></div>
+    </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="js/api.js"></script><script src="js/auth.js"></script>
+  <footer class="d-flex justify-content-between"><span>School HelpDesk</span><a href="index.html">Back to overview</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script><script src="js/api.js"></script><script src="js/auth.js"></script>
 </body>
 </html>

@@ -36,6 +36,10 @@ const formLogin = document.getElementById('form-login');
 if (formLogin) {
   formLogin.addEventListener('submit', async (evento) => {
     evento.preventDefault();
+    const botao = formLogin.querySelector('button[type="submit"]');
+    const rotuloOriginal = botao.textContent;
+    botao.disabled = true;
+    botao.textContent = 'Connecting…';
     try {
       const dados = await apiFetch('/auth/login', {
         method: 'POST',
@@ -45,6 +49,9 @@ if (formLogin) {
       window.location.href = 'chamados.html';
     } catch (erro) {
       mostrarMensagemAuth([erro.message, ...(erro.detalhes || [])].join(' '));
+    } finally {
+      botao.disabled = false;
+      botao.textContent = rotuloOriginal;
     }
   });
 }
@@ -53,6 +60,10 @@ const formCadastro = document.getElementById('form-cadastro');
 if (formCadastro) {
   formCadastro.addEventListener('submit', async (evento) => {
     evento.preventDefault();
+    const botao = formCadastro.querySelector('button[type="submit"]');
+    const rotuloOriginal = botao.textContent;
+    botao.disabled = true;
+    botao.textContent = 'Creating account…';
     try {
       await apiFetch('/auth/register', {
         method: 'POST',
@@ -67,6 +78,9 @@ if (formCadastro) {
       setTimeout(() => { window.location.href = 'login.html'; }, 1000);
     } catch (erro) {
       mostrarMensagemAuth([erro.message, ...(erro.detalhes || [])].join(' '));
+    } finally {
+      botao.disabled = false;
+      botao.textContent = rotuloOriginal;
     }
   });
 }

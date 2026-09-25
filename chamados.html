@@ -2,39 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tickets | HelpDesk</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="theme-color" content="#6957d8"><title>Ticket queue | School HelpDesk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"><link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-roxa"><div class="container"><a class="navbar-brand fw-bold" href="chamados.html">School HelpDesk</a><div class="d-flex align-items-center gap-3"><span class="small" id="usuario-logado"></span><button class="btn btn-sm btn-outline-primary" data-logout>Sign out</button></div></div></nav>
-  <main class="container py-5">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-      <div><h1 class="h2 mb-1">Tickets</h1><p class="text-secondary mb-0" id="descricao-lista">Track your support requests.</p></div>
-      <button class="btn btn-primary" id="botao-novo">+ Open ticket</button>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <nav class="navbar navbar-roxa"><div class="container"><a class="navbar-brand" href="chamados.html"><span class="brand-mark">H+</span><span class="brand-copy">School HelpDesk<small>ticket workspace</small></span></a><div class="nav-actions"><span class="service-pill" id="service-status">API connected</span><span class="nav-user" id="usuario-logado"></span><button class="btn btn-outline-primary" data-logout>Sign out</button></div></div></nav>
+  <main class="container" id="content">
+    <header class="page-heading"><div><p class="eyebrow">SUPPORT_QUEUE.APP</p><h1>Ticket queue</h1><p id="descricao-lista">Track your support requests and keep every update together.</p></div><button class="btn btn-primary btn-lg" id="botao-novo">+ Open ticket</button></header>
+    <div id="mensagem" class="mensagem escondido" role="status"></div>
+
+    <section id="painel-novo" class="card escondido"><div class="card-body p-4 p-md-5"><p class="eyebrow">NEW_REQUEST.TXT</p><h2 class="h3 mb-3">What do you need help with?</h2><form id="form-chamado"><div class="mb-3"><label class="form-label" for="titulo">Short title</label><input class="form-control" id="titulo" name="titulo" maxlength="150" placeholder="Example: Projector is not connecting" required></div><div class="mb-3"><label class="form-label" for="descricao">What happened?</label><textarea class="form-control" id="descricao" name="descricao" rows="5" minlength="10" placeholder="Add the location, what you tried, and what you expected to happen." required></textarea></div><div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" type="submit">Submit ticket →</button><button type="button" class="btn btn-outline-primary" id="cancelar-novo">Cancel</button></div></form></div></section>
+
+    <div class="queue-layout">
+      <aside class="queue-sidebar"><h2>FILTER_QUEUE</h2><div class="filtros"><button class="btn filtro ativo" data-filtro="Todos">All tickets</button><button class="btn filtro" data-filtro="Aberto">Open</button><button class="btn filtro" data-filtro="Em Atendimento">In progress</button><button class="btn filtro" data-filtro="Concluído">Resolved</button></div></aside>
+      <section><div id="lista-chamados" class="grade" aria-live="polite"><div class="painel vazio">Loading the ticket queue…</div></div></section>
     </div>
-    <div id="mensagem" class="mensagem escondido"></div>
-
-    <section id="painel-novo" class="card border-0 shadow-sm mb-4 escondido"><div class="card-body p-4">
-      <h2 class="h4 mb-3">New ticket</h2>
-      <form id="form-chamado">
-        <div class="mb-3"><label class="form-label" for="titulo">Title</label><input class="form-control" id="titulo" name="titulo" maxlength="150" required></div>
-        <div class="mb-3"><label class="form-label" for="descricao">Description</label><textarea class="form-control" id="descricao" name="descricao" rows="5" minlength="10" required></textarea></div>
-        <div class="d-flex gap-2"><button class="btn btn-primary" type="submit">Submit ticket</button><button type="button" class="btn btn-light border" id="cancelar-novo">Cancel</button></div>
-      </form>
-    </div></section>
-
-    <section>
-      <div class="d-flex flex-wrap gap-2 mb-4 filtros">
-        <button class="btn btn-sm filtro ativo" data-filtro="Todos">All</button>
-        <button class="btn btn-sm filtro" data-filtro="Aberto">Open</button>
-        <button class="btn btn-sm filtro" data-filtro="Em Atendimento">In progress</button>
-        <button class="btn btn-sm filtro" data-filtro="Concluído">Resolved</button>
-      </div>
-      <div id="lista-chamados" class="grade"></div>
-    </section>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  <script src="js/api.js"></script><script src="js/auth.js"></script><script src="js/chamados.js"></script>
+  <footer class="d-flex flex-wrap justify-content-between gap-2"><span>School HelpDesk · authenticated workspace</span><span>Your session is stored in this browser.</span></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script><script src="js/api.js"></script><script src="js/auth.js"></script><script src="js/chamados.js"></script>
 </body>
 </html>

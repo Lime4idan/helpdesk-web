@@ -8,6 +8,15 @@ if (window.location.protocol === 'file:') {
 // Para voltar ao uso local, troque por: http://127.0.0.1:3001/api
 const API_URL = 'https://helpdesk-api-t1hv.onrender.com/api';
 
+function atualizarStatusApi(estado, texto) {
+  const indicador = document.getElementById('service-status');
+  if (!indicador) return;
+  indicador.classList.remove('is-waking', 'is-error');
+  if (estado === 'waking') indicador.classList.add('is-waking');
+  if (estado === 'error') indicador.classList.add('is-error');
+  indicador.textContent = texto;
+}
+
 function obterToken() {
   return localStorage.getItem('helpdesk_token');
 }
@@ -22,13 +31,32 @@ async function apiFetch(caminho, opcoes = {}) {
   const token = obterToken();
   if (token) cabecalhos.Authorization = `Bearer ${token}`;
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 45000);
+  const avisoLentidao = setTimeout(() => {
+    atualizarStatusApi('waking', 'Waking up API…');
+  }, 2200);
+
   let resposta;
   try {
-    resposta = await fetch(`${API_URL}${caminho}`, { ...opcoes, headers: cabecalhos });
+    resposta = await fetch(`${API_URL}${caminho}`, {
+      ...opcoes,
+      headers: cabecalhos,
+      signal: controller.signal
+    });
+    atualizarStatusApi('online', 'API connected');
   } catch (erro) {
-    const erroConexao = new Error('Could not connect to the API. Please try again in a moment.');
+    atualizarStatusApi('error', 'API unavailable');
+    const erroConexao = new Error(
+      erro.name === 'AbortError'
+        ? 'The API took too long to respond. Please try again.'
+        : 'Could not connect to the API. Please try again in a moment.'
+    );
     erroConexao.detalhes = [];
     throw erroConexao;
+  } finally {
+    clearTimeout(timeout);
+    clearTimeout(avisoLentidao);
   }
 
   const dados = resposta.status === 204 ? null : await resposta.json();

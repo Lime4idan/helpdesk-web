@@ -1,6 +1,6 @@
 <div align="center">
 
-# HelpDesk Web
+# 💬 HelpDesk Web
 
 A simple, responsive interface for support requests from opening to resolution.
 
@@ -17,6 +17,12 @@ A lightweight frontend connected to the HelpDesk REST API through the native `fe
 [Open the live website](https://helpdesk-web-plum.vercel.app) · [View the API repository](https://github.com/Lime4idan/helpdesk-api) · [Explore the API docs](https://helpdesk-api-t1hv.onrender.com/api-docs)
 
 </div>
+
+---
+
+## Preview
+
+![School HelpDesk interface showing the support queue and ticket workflow](assets/helpdesk-preview.png)
 
 ---
 
